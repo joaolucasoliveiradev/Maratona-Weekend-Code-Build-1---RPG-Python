@@ -2,12 +2,27 @@ from time import sleep
 import pygame
 import os
 import questionary
+import random
 
 pygame.init()
 
 def musica(musica):
     pygame.mixer.music.load(f"{musica}.mp3")
     pygame.mixer.music.play()
+def descriçao(texto):
+    mensagem = texto
+    anima = ""
+    musica("teclado")
+    sleep(0.8)
+    for letra in texto:
+        anima += letra
+        if letra == ",":
+            pygame.mixer.music.stop()
+            musica("teclado")
+            sleep(0.8)
+        print(f"\r{anima}",end='')
+        sleep(0.08)
+    pygame.mixer.music.stop()
 def iniciar():
     print("A Venum's Game...")
     sleep(2)
@@ -70,8 +85,25 @@ def jogo():
     pygame.mixer.music.stop()
     sleep(2)
     os.system("cls")
-    
-    input()
+    cap1 = "Capítulo 1: Um pequeno flagelo."
+    anima1 = ""
+    musica("teclado")
+    sleep(0.8)
+    for let in cap1:
+        anima1+=let
+        print(f"\r{anima1}",end='')
+        sleep(0.08)
+    pygame.mixer.music.stop()
+    sleep(3)
+    os.system("cls")
+    desccap1_1 = f"Em um mundo de caos e corrupção, não haviam mais esperanças, apenas o medo e a incerteza..... Mas, surgiu alguém..."
+    descap1_2 = f"Porque sempre surge um alguém..."
+    descriçao(desccap1_1)
+    sleep(1)
+    os.system("cls")
+    descriçao(descap1_2)
+    sleep(3)
+
 
 
 
